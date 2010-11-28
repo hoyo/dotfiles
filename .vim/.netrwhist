@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/hoyo/.vim'
+let g:netrw_dirhist_2='/Users/hoyo/Documents'
+let g:netrw_dirhist_3='/Users/hoyo/Documents/KDDI'
+let g:netrw_dirhist_4='/Users/hoyo/Documents/workspace/git/sojosojo/templates/example'
+let g:netrw_dirhist_5='/Users/hoyo/.vim'
+let g:netrw_dirhist_6='/Users/hoyo'
