@@ -8,5 +8,8 @@
     branch = auto
 
 [core]
-    excludesfile = $HOME/.gitignore
+    excludesfile = ~/.gitignore
+
+[alias]
+    ci = commit -a
 
