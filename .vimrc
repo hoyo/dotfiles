@@ -16,9 +16,31 @@ set expandtab       "タブの代わりに空白文字挿入
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
 "Ref phpmanualで参照するHTMLを指定
-let g:ref_phpmanual_path = $HOME . '/Dropbox/phpmanual'
+let g:ref_phpmanual_path = $HOME . '/.vim/resource/phpmanual'
 
 "Zen-Codingのキーバインド変更
 let g:user_zen_expandabbr_key = '<c-e>'
 "let g:use_zen_complete_tag = 1
+
+"vim-pathogenの設定
+call pathogen#runtime_append_all_bundles()
+
+"neocomplcacheの有効化・一部のカスタマイズ
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_smartcase = 1
+let g:neocomplcache_min_syntax_length = 3
+
+"git-vimのキーマッピング等を変更
+let g:git_no_map_default = 1
+let g:git_command_edit = 'rightbelow vnew'
+nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
+nnoremap <Space>gD :<C-u>GitDiff<Enter>
+nnoremap <Space>gs :<C-u>GitStatus<Enter>
+nnoremap <Space>gl :<C-u>GitLog<Enter>
+nnoremap <Space>gL :<C-u>GitLog -u \| head -10000<Enter>
+nnoremap <Space>ga :<C-u>GitAdd<Enter>
+nnoremap <Space>gA :<C-u>GitAdd <cfile><Enter>
+nnoremap <Space>gc :<C-u>GitCommit<Enter>
+nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
+nnoremap <Space>gp :<C-u>Git push
 
