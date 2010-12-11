@@ -29,6 +29,12 @@ call pathogen#runtime_append_all_bundles()
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_smartcase = 1
 let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_dictionary_filetype_lists = { 
+  \ 'default' : '', 
+  \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
+  \ 'perl' : $HOME . '/.vim/dict/perl_functions._functions.dict',
+  \ 'php' : $HOME . '/.vim/dict/php_functions.dict'
+  \ }
 
 "git-vimのキーマッピング等を変更
 let g:git_no_map_default = 1
@@ -43,4 +49,8 @@ nnoremap <Space>gA :<C-u>GitAdd <cfile><Enter>
 nnoremap <Space>gc :<C-u>GitCommit<Enter>
 nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
 nnoremap <Space>gp :<C-u>Git push
+
+"dictファイルの指定
+autocmd FileType php :set dictionary+=~/.vim/dict/php_functions.dict
+autocmd FileType perl :set dictionary+=~/.vim/dict/perl_functions.dict
 
