@@ -1,15 +1,17 @@
 [user]
-	name = Keigo AOKI
-	email = hoyo1111@gmail.com
+  name = Keigo AOKI
+  email = hoyo1111@gmail.com
 
 [color]
-    diff = auto
-    status = auto
-    branch = auto
+  diff = auto
+  status = auto
+  branch = auto
+  grep = auto
 
 [core]
-    excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 
 [alias]
-    ci = commit -a
+  st = status
+  ci = commit -a
 
