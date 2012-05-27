@@ -18,6 +18,9 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "Ref phpmanualで参照するHTMLを指定
 let g:ref_phpmanual_path = $HOME . '/.vim/resource/phpmanual'
 
+"Ref alcでw3mを使うとSegmentation Faultになるのでlynxを使用
+let g:ref_alc_cmd='lynx -dump -nonumbers %s'
+
 "Zen-Codingのキーバインド変更
 let g:user_zen_expandabbr_key = '<c-e>'
 "let g:use_zen_complete_tag = 1
