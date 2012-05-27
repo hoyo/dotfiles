@@ -15,29 +15,52 @@ set expandtab       "タブの代わりに空白文字挿入
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
+"vundleの設定
+set nocompatible
+filetype off
+set rtp+=~/.vim/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle "Shougo/neocomplcache"
+Bundle "thinca/vim-ref"
+Bundle "mattn/zencoding-vim"
+Bundle "mattn/webapi-vim"
+Bundle "mattn/mkdpreview-vim"
+Bundle "motemen/git-vim.git"
+Bundle "yko/mojo.vim"
+filetype plugin indent on
+
 "Ref phpmanualで参照するHTMLを指定
+nmap ,php :<C-u>Ref phpmanual<Space>
 let g:ref_phpmanual_path = $HOME . '/.vim/resource/phpmanual'
 
-"Ref alcでw3mを使うとSegmentation Faultになるのでlynxを使用
-let g:ref_alc_cmd='lynx -dump -nonumbers %s'
+"Ref webdictでalcを使う設定
+nmap ,alc :<C-u>Ref webdict alc<Space>
+let g:ref_source_webdict_cmd = 'lynx -dump -nonumbers %s'
+let g:ref_source_webdict_use_cache = 1
+let g:ref_source_webdict_sites = {
+\ 'alc' : {
+\   'url' : 'http://eow.alc.co.jp/%s/UTF-8/'
+\   }
+\ }
+function! g:ref_source_webdict_sites.alc.filter(output)
+  return join(split(a:output, "\n")[42 :], "\n")
+endfunction
 
 "Zen-Codingのキーバインド変更
 let g:user_zen_expandabbr_key = '<c-e>'
 "let g:use_zen_complete_tag = 1
-
-"vim-pathogenの設定
-call pathogen#runtime_append_all_bundles()
 
 "neocomplcacheの有効化・一部のカスタマイズ
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_smartcase = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_dictionary_filetype_lists = { 
-  \ 'default' : '', 
-  \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
-  \ 'perl' : $HOME . '/.vim/dict/perl_functions._functions.dict',
-  \ 'php' : $HOME . '/.vim/dict/php_functions.dict'
-  \ }
+\ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
+\ 'perl' : $HOME . '/.vim/dict/perl_functions._functions.dict',
+\ 'php' : $HOME . '/.vim/dict/php_functions.dict',
+\ 'default' : ''
+\ }
 
 "git-vimのキーマッピング等を変更
 let g:git_no_map_default = 1
