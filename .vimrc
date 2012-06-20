@@ -42,7 +42,7 @@ let g:ref_phpmanual_path = $HOME . '/.vim/resource/phpmanual'
 "Ref webdictでalcを使う設定
 nmap ,alc :<C-u>Ref webdict alc<Space>
 let g:ref_source_webdict_cmd = 'lynx -dump -nonumbers %s'
-let g:ref_source_webdict_use_cache = 1
+"let g:ref_source_webdict_use_cache = 1
 let g:ref_source_webdict_sites = {
 \ 'alc' : {
 \   'url' : 'http://eow.alc.co.jp/%s/UTF-8/'

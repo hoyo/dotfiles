@@ -17,3 +17,5 @@
   co = checkout
   pl = !git pull && git submodule update --init
 
+[credential]
+	helper = osxkeychain
