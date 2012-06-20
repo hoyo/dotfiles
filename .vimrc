@@ -12,10 +12,14 @@ set tabstop=2       "タブ文字数
 set shiftwidth=2    "シフト移動幅
 set expandtab       "タブの代わりに空白文字挿入
 
+"Display tab and trail
+set list
+set listchars=tab:▸\ ,trail:-
+
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
-"vundleの設定
+"Vundleの設定
 set nocompatible
 filetype off
 set rtp+=~/.vim/vundle/
@@ -28,6 +32,7 @@ Bundle "mattn/webapi-vim"
 Bundle "mattn/mkdpreview-vim"
 Bundle "motemen/git-vim.git"
 Bundle "yko/mojo.vim"
+Bundle "nanotech/jellybeans.vim"
 filetype plugin indent on
 
 "Ref phpmanualで参照するHTMLを指定

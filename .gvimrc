@@ -4,16 +4,17 @@ if has('gui_macvim')
   set transparency=7  "透明度を指定
   set guioptions-=T   "ツールバー非表示
   set antialias
-  set guifontwide=Osaka-Mono:h12
-  set guifont=Osaka-Mono:h13
+  set guifontwide=Ricty:h14
+  set guifont=Ricty:h14
   set columns=140
-  set lines=45
-
-  colorscheme desert
-  highlight LineNr guifg=grey guibg=#444444
+  set lines=55
 endif
 
-" Cmd-A is Select all
+"カラースキーマとレイアウト
+colorscheme jellybeans
+highlight LineNr guifg=grey guibg=#444444
+
+"Cmd-A is Select all
 noremap <D-a> gggH<C-O>G
 inoremap <D-a> <C-O>gg<C-O>gH<C-O>G
 cnoremap <D-a> <C-C>gggH<C-O>G
