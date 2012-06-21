@@ -33,6 +33,7 @@ Bundle "mattn/mkdpreview-vim"
 Bundle "motemen/git-vim.git"
 Bundle "yko/mojo.vim"
 Bundle "nanotech/jellybeans.vim"
+Bundle "scrooloose/syntastic"
 filetype plugin indent on
 
 "Ref phpmanualで参照するHTMLを指定
