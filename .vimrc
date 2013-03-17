@@ -17,7 +17,24 @@ set list
 set listchars=tab:▸\ ,trail:-
 
 "Escの2回押しでハイライト消去
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
+nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
+
+"カレントウィンドウのみハイライト
+set cursorline
+augroup cch
+  autocmd! cch
+  autocmd WinLeave * set nocursorline
+  autocmd WinEnter,BufRead * set cursorline
+augroup END
+hi clear CursorLine
+hi CursorLine gui=underline
+highlight CursorLine ctermbg=black guibg=black
+
+"CTRL-hjklでウィンドウ移動
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 
 "Vundleの設定
 set nocompatible
@@ -25,16 +42,35 @@ filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle "Shougo/neocomplcache"
-Bundle "thinca/vim-ref"
-Bundle "mattn/zencoding-vim"
-Bundle "mattn/webapi-vim"
-Bundle "mattn/mkdpreview-vim"
-Bundle "motemen/git-vim.git"
-Bundle "yko/mojo.vim"
-Bundle "nanotech/jellybeans.vim"
-Bundle "scrooloose/syntastic"
+Bundle 'Shougo/neocomplcache'
+Bundle 'thinca/vim-ref'
+Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/mkdpreview-vim'
+Bundle 'motemen/git-vim.git'
+Bundle 'yko/mojo.vim'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'airblade/vim-gitgutter'
 filetype plugin indent on
+
+"拡張子ごとのファイルタイプを設定
+au BufNewFile,BufRead *.tss set filetype=javascript
+
+"Alloyで3つを同時に開く設定
+function OpenAlloy()
+  let s:view=substitute(expand('%:r'),"controllers","views","").".xml" 
+  let s:style=substitute(expand('%:r'),"controllers","styles","").".tss" 
+  exec 'NERDTree'
+  exec 'NERDTreeToggle'
+  exec 'only'
+  exec 'vsplit' s:view
+  exec 'vsplit' s:style
+  set filetype=javascript
+  exec 'NERDTreeToggle'
+endfunction
+au BufRead */app/controllers/*.js call OpenAlloy()
 
 "Ref phpmanualで参照するHTMLを指定
 nmap ,php :<C-u>Ref phpmanual<Space>
@@ -85,4 +121,8 @@ nnoremap <Space>gp :<C-u>Git push
 "dictファイルの指定
 autocmd FileType php :set dictionary+=~/.vim/dict/php_functions.dict
 autocmd FileType perl :set dictionary+=~/.vim/dict/perl_functions.dict
+
+"NERDTreeを常に表示
+autocmd vimenter * NERDTree
+let NERDTreeWinSize=30
 
