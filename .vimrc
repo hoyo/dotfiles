@@ -53,24 +53,20 @@ Bundle 'nanotech/jellybeans.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'wavded/vim-stylus'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'digitaltoad/vim-jade'
+syntax enable
 filetype plugin indent on
 
 "拡張子ごとのファイルタイプを設定
-au BufNewFile,BufRead *.tss set filetype=javascript
+au BufNewFile,BufRead,BufReadPre *.tss set filetype=javascript
+au BufNewFile,BufRead,BufReadPre *.jmk set filetype=javascript
+au BufNewFile,BufRead,BufReadPre *.ejs set filetype=html
+au BufNewFile,BufRead,BufReadPre *.coffee set filetype=coffee
 
-"Alloyで3つを同時に開く設定
-function OpenAlloy()
-  let s:view=substitute(expand('%:r'),"controllers","views","").".xml" 
-  let s:style=substitute(expand('%:r'),"controllers","styles","").".tss" 
-  exec 'NERDTree'
-  exec 'NERDTreeToggle'
-  exec 'only'
-  exec 'vsplit' s:view
-  exec 'vsplit' s:style
-  set filetype=javascript
-  exec 'NERDTreeToggle'
-endfunction
-au BufRead */app/controllers/*.js call OpenAlloy()
+"拡張子ごとのインデントを設定
+autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
 
 "Ref phpmanualで参照するHTMLを指定
 nmap ,php :<C-u>Ref phpmanual<Space>
