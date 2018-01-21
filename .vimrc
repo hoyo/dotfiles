@@ -75,10 +75,6 @@ autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
 autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
 autocmd FileType html setlocal sw=2 sts=2 ts=2 et
 
-"Ref phpmanualで参照するHTMLを指定
-nmap ,php :<C-u>Ref phpmanual<Space>
-let g:ref_phpmanual_path = $HOME . '/.vim/resource/phpmanual'
-
 "Zen-Codingのキーバインド変更
 let g:user_zen_expandabbr_key = '<c-e>'
 "let g:use_zen_complete_tag = 1
@@ -89,7 +85,7 @@ let g:neocomplcache_smartcase = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_dictionary_filetype_lists = { 
 \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
-\ 'perl' : $HOME . '/.vim/dict/perl_functions._functions.dict',
+\ 'perl' : $HOME . '/.vim/dict/perl_functions.dict',
 \ 'php' : $HOME . '/.vim/dict/php_functions.dict',
 \ 'default' : ''
 \ }
