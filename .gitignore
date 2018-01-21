@@ -2,5 +2,12 @@
 *.swp
 .DS_Store
 Thumbs.db
-.vim/bundle/
+.idea
+~*
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+.vim/*/.cache/*
 
